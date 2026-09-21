@@ -1,0 +1,13 @@
+[project]
+name = "comfyui-qwenimage21-weightedconditioning"
+description = "Qwen Image 2.1 Prompt Mix with attention-side auxiliary prompt weighting."
+version = "0.1.0"
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.comfy]
+PublisherId = "cicalooo"
+DisplayName = "Qwen Image 2.1 Weighted Conditioning"
+Icon = ""
