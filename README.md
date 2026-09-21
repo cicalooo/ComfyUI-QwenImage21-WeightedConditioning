@@ -13,6 +13,25 @@ Qwen does not use CLIP-style `(prompt:0.5)` weighting. This node encodes both pr
 | **Outputs** | `MODEL`, positive, negative, latent, debug |
 | **Dependencies** | Current ComfyUI with native Qwen Image 2.1 support |
 
+<p align="center">
+  <img src="qwen-image21-prompt-mix.png" alt="Qwen Image 2.1 Prompt Mix node" width="520">
+</p>
+
+### Wiring
+
+```text
+Qwen Image 2.1 MODEL ──────────────► model       MODEL ─────► sampler.model
+Qwen Image 2.1 CLIP ───────────────► clip     positive ─────► sampler.positive
+Load Image(s), optional ────────────► image_*  negative ─────► sampler.negative
+Qwen Image 2.1 VAE, for editing ───► vae        latent ─────► sampler.latent_image
+
+Subject or edit instruction ───────► text_main
+Style or moodboard prompt ─────────► text_aux
+Negative prompt ───────────────────► negative_prompt
+```
+
+For text-to-image generation, leave `image_*` and `vae` disconnected. For image editing, connect one or more reference images and the Qwen Image 2.1 VAE.
+
 ## Install
 
 Place this repository in `ComfyUI/custom_nodes`, then restart ComfyUI. No additional Python packages are required.
